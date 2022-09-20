@@ -20,6 +20,18 @@ class Phrase {
       }
     }
   }
-  checkLetter() {}
-  showMatchedLetter() {}
+  //Checks if passed letter is in phrase
+  checkLetter(letter) {
+    return this.phrase.includes(letter);
+  }
+  //Displays passed letter on screen after a match is found
+  showMatchedLetter(letter) {
+    const lettersInPhrase = document.querySelector("#phrase li");
+    for (let i = 0; i < lettersInPhrase.length; i++) {
+      if (lettersInPhrase[i].textContent.includes(letter)) {
+        lettersInPhrase[i].classList.remove("hide");
+        lettersInPhrase[i].classList.add("show");
+      }
+    }
+  }
 }
