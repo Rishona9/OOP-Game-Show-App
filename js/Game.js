@@ -33,13 +33,10 @@ class Game {
   //Removes life from scoreboard if no matching letter in phrase
   removeLife() {
     this.missed++;
-    const tries = document.querySelectorAll("tries");
-    for (let i = 0; i < this.missed; i++) {
-      const liveHeart = (document.querySelectorAll("img").src =
-        "liveHeart.png");
-      const lostHeart = (document.querySelectorAll("img").src =
-        "lostHeart.png");
-    }
+    const tries = document.querySelectorAll(".tries");
+    const liveHeart = (document.querySelectorAll("img").src = "liveHeart.png");
+    const lostHeart = (document.querySelectorAll("img").src = "lostHeart.png");
+    for (let i = 0; i < tries.length; i++) {}
     if (this.missed === 5) {
       this.gameOver();
     }
