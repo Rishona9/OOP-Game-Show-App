@@ -17,9 +17,12 @@ class Game {
   }
   //Begins game by selecting a random phrase and displaying it to user
   startGame() {
-    document.querySelector("#overlay").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
     this.activePhrase = this.getRandomPhrase();
     this.activePhrase.addPhraseToDisplay();
   }
+  //Checks for winning move
+
+  checkForWin() {}
   handleInteraction() {}
 }
