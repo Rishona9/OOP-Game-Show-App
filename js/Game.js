@@ -36,7 +36,10 @@ class Game {
     const tries = document.querySelectorAll(".tries");
     const liveHeart = (document.querySelectorAll("img").src = "liveHeart.png");
     const lostHeart = (document.querySelectorAll("img").src = "lostHeart.png");
-    for (let i = 0; i < tries.length; i++) {}
+    for (let i = 0; i < tries.length; i++) {
+      liveHeart.style.display = "hide";
+      lostHeart.style.display = "show";
+    }
     if (this.missed === 5) {
       this.gameOver();
     }
