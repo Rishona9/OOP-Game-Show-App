@@ -28,8 +28,10 @@ class Phrase {
     const matchedLetter = document.querySelectorAll(".letter");
     if (this.checkLetter(letter)) {
       for (let i = 0; i < matchedLetter.length; i++) {
-        matchedLetter[i].classList.remove("hide");
-        matchedLetter[i].classList.add("show");
+        if (matchedLetter[i].classList.contains(letter)) {
+          matchedLetter[i].classList.remove("hide");
+          matchedLetter[i].classList.add("show");
+        }
       }
     }
   }
