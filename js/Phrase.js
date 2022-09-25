@@ -19,9 +19,18 @@ class Phrase {
       ul.appendChild(li);
     });
   }
-
   //Checks if passed letter is in phrase
-  checkLetter(letter) {}
+  checkLetter(letter) {
+    return this.phrase.includes(letter);
+  }
   //Displays passed letter on screen after a match is found
-  showMatchedLetter(letter) {}
+  showMatchedLetter(letter) {
+    const matchedLetter = document.querySelectorAll(".letter");
+    if (this.checkLetter(letter)) {
+      for (let i = 0; i < matchedLetter.length; i++) {
+        matchedLetter[i].classList.remove("hide");
+        matchedLetter[i].classList.add("show");
+      }
+    }
+  }
 }

@@ -22,7 +22,28 @@ class Game {
     this.activePhrase.addPhraseToDisplay();
   }
   //Checks for winning move
-
-  checkForWin() {}
-  handleInteraction() {}
+  checkForWin() {
+    const hiddenCharacter = document.getElementsByClassName("hide");
+    if (hiddenCharacter.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  //Removes life from scoreboard if no matching letter in phrase
+  removeLife() {
+    this.missed++;
+    const tries = document.querySelectorAll("tries");
+    for (let i = 0; i < this.missed; i++) {
+      const liveHeart = (document.querySelectorAll("img").src =
+        "liveHeart.png");
+      const lostHeart = (document.querySelectorAll("img").src =
+        "lostHeart.png");
+    }
+    if (this.missed === 5) {
+      this.gameOver();
+    }
+  }
+  //Displays the original start screen overlay and displays winning or losing message
+  gameOver() {}
 }
