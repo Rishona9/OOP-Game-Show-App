@@ -32,18 +32,62 @@ class Game {
   }
   //Removes life from scoreboard if no matching letter in phrase
   removeLife() {
-    this.missed++;
-    const tries = document.querySelectorAll(".tries");
-    const liveHeart = (document.querySelectorAll("img").src = "liveHeart.png");
-    const lostHeart = (document.querySelectorAll("img").src = "lostHeart.png");
-    for (let i = 0; i < tries.length; i++) {
-      liveHeart.style.display = "hide";
-      lostHeart.style.display = "show";
-    }
-    if (this.missed === 5) {
+    const lifeHearts = document.querySelectorAll("img");
+    if (this.missed < 4) {
+      lifeHearts[this.missed].src = "images/lostHeart.png";
+      this.missed++;
+    } else {
       this.gameOver();
     }
   }
   //Displays the original start screen overlay and displays winning or losing message
-  gameOver() {}
+  gameOver(gameWon) {
+    const overLay = document.getElementById("overlay");
+    if (gameWon) {
+      document.getElementById("game-over-message").innerHTML =
+        "You win, please play again!";
+      overLay.className = "win";
+      overLay.style.display = "";
+    } else {
+      document.getElementById("game-over-message").innerHTML =
+        "You lose, please try again!";
+      overLay.className = "lose";
+      overLay.style.display = "";
+    }
+  }
+  /*Checks to see if the onscreen keyboard button clicked by the player matches a letter in the phrase, 
+  and then directs the game based on a correct or incorrect guess */
+  handleInteraction(button) {
+    button.disabled = true;
+    if (this.activePhrase.checkLetter(button.textContent)) {
+      button.classList.add("chosen");
+      this.activePhrase.showMatchedLetter(button.textContent);
+      this.checkForWin();
+      if (this.checkForWin()) {
+        this.gameOver(true);
+      }
+    } else {
+      button.classList.add("wrong");
+      this.removeLife();
+    }
+  }
+  //Resets the gameboard between games
+  resetGame() {
+    const phrase = document.querySelector("#phrase");
+    const keys = document.querySelectorAll(".key");
+    const lifeHearts = document.querySelectorAll("img");
+    const buttonReset = document.getElementById("btn__reset");
+
+    buttonReset.addEventListener("click", (e) => {
+      this.missed = 0;
+      phrase.innerHTML = "<ul></ul>";
+      keys.forEach((key) => {
+        key.className = "key";
+        key.disabled = false;
+      });
+      lifeHearts.forEach((life) => {
+        life.src = "images/liveHeart.png";
+      });
+    });
+  }
 }
