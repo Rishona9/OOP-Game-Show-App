@@ -54,6 +54,7 @@ class Game {
       overLay.className = "lose";
       overLay.style.display = "";
     }
+    this.resetGame();
   }
   /*Checks to see if the onscreen keyboard button clicked by the player matches a letter in the phrase, 
   and then directs the game based on a correct or incorrect guess */
@@ -88,6 +89,7 @@ class Game {
       lifeHearts.forEach((life) => {
         life.src = "images/liveHeart.png";
       });
+      game.startGame();
     });
   }
 }
