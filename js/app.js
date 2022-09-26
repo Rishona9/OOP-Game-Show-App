@@ -12,9 +12,11 @@ keyboard.addEventListener("click", (e) => {
   }
 });
 //Allows user to use keyboard to guess letters
-const keys = document.querySelectorAll(".key");
-keys.addEventListener("keyup", (e) => {
-  if (e.target.className === "key") {
-    game.handleInteraction(e.target);
-  }
+document.addEventListener("keyup", (e) => {
+  const keys = document.querySelectorAll(".key");
+  keys.forEach((button) => {
+    if (e.key === button.textContent) {
+      game.handleInteraction(button);
+    }
+  });
 });
