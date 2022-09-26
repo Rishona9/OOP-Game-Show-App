@@ -2,11 +2,12 @@ class Game {
   constructor() {
     this.missed = 0;
     this.phrases = [
-      new Phrase("It is what it is"),
-      new Phrase("It is always darkest before the dawn"),
-      new Phrase("Take the good with the bad"),
-      new Phrase("Another day another dollar"),
-      new Phrase("Time heals all wounds"),
+      new Phrase("There is no place like home"),
+      new Phrase("Nobody puts Baby in a corner"),
+      new Phrase("My precious"),
+      new Phrase("May the Force be with you"),
+      new Phrase("Here's looking at you kid"),
+      new Phrase("There is no crying in baseball"),
     ];
     this.activePhrase = null;
   }
